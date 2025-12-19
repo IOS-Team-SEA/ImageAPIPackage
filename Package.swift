@@ -11,7 +11,8 @@ let package = Package(
         .library(name: "ImageAPI", targets: ["ImageAPI"])
     ],
     dependencies: [
-        .package(path: "../PlatformSpineKit")
+        .package(path: "../PlatformSpineKit"),
+        .package(path: "../SocketConnectionPackage")
     ],
     targets: [
         .target(
@@ -21,7 +22,8 @@ let package = Package(
                 .product(name: "LoggerKit", package: "PlatformSpineKit"),
                 .product(name: "AnalyticsKit", package: "PlatformSpineKit"),
                 .product(name: "VisionCapabilities", package: "PlatformSpineKit"),
-                .product(name: "ImagePipelineCore", package: "PlatformSpineKit")
+                .product(name: "ImagePipelineCore", package: "PlatformSpineKit"),
+                .product(name: "SocketConnection", package: "SocketConnectionPackage")
             ]
         ),
         .testTarget(
