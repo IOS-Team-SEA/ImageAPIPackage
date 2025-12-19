@@ -1,0 +1,12 @@
+{
+  "": {
+    "swift-dependencies": "/Users/jd_home/Documents/SEA ALL APPS/AUDIO_SPLITTER POC/ImageAPIPackage/.build/arm64-apple-macosx/debug/CommonFoundation.build/master.swiftdeps"
+  },
+  "/Users/jd_home/Documents/SEA ALL APPS/AUDIO_SPLITTER POC/PlatformSpineKit/Sources/CommonFoundation/CommonFoundation.swift": {
+    "dependencies": "/Users/jd_home/Documents/SEA ALL APPS/AUDIO_SPLITTER POC/ImageAPIPackage/.build/arm64-apple-macosx/debug/CommonFoundation.build/CommonFoundation.d",
+    "object": "/Users/jd_home/Documents/SEA ALL APPS/AUDIO_SPLITTER POC/ImageAPIPackage/.build/arm64-apple-macosx/debug/CommonFoundation.build/CommonFoundation.swift.o",
+    "swiftmodule": "/Users/jd_home/Documents/SEA ALL APPS/AUDIO_SPLITTER POC/ImageAPIPackage/.build/arm64-apple-macosx/debug/CommonFoundation.build/CommonFoundation~partial.swiftmodule",
+    "swift-dependencies": "/Users/jd_home/Documents/SEA ALL APPS/AUDIO_SPLITTER POC/ImageAPIPackage/.build/arm64-apple-macosx/debug/CommonFoundation.build/CommonFoundation.swiftdeps",
+    "diagnostics": "/Users/jd_home/Documents/SEA ALL APPS/AUDIO_SPLITTER POC/ImageAPIPackage/.build/arm64-apple-macosx/debug/CommonFoundation.build/CommonFoundation.dia"
+  }
+}

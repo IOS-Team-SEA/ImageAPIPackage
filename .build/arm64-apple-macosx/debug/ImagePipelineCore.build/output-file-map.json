@@ -1,0 +1,19 @@
+{
+  "": {
+    "swift-dependencies": "/Users/jd_home/Documents/SEA ALL APPS/AUDIO_SPLITTER POC/ImageAPIPackage/.build/arm64-apple-macosx/debug/ImagePipelineCore.build/master.swiftdeps"
+  },
+  "/Users/jd_home/Documents/SEA ALL APPS/AUDIO_SPLITTER POC/PlatformSpineKit/Sources/ImagePipelineCore/ImageFilters.swift": {
+    "dependencies": "/Users/jd_home/Documents/SEA ALL APPS/AUDIO_SPLITTER POC/ImageAPIPackage/.build/arm64-apple-macosx/debug/ImagePipelineCore.build/ImageFilters.d",
+    "object": "/Users/jd_home/Documents/SEA ALL APPS/AUDIO_SPLITTER POC/ImageAPIPackage/.build/arm64-apple-macosx/debug/ImagePipelineCore.build/ImageFilters.swift.o",
+    "swiftmodule": "/Users/jd_home/Documents/SEA ALL APPS/AUDIO_SPLITTER POC/ImageAPIPackage/.build/arm64-apple-macosx/debug/ImagePipelineCore.build/ImageFilters~partial.swiftmodule",
+    "swift-dependencies": "/Users/jd_home/Documents/SEA ALL APPS/AUDIO_SPLITTER POC/ImageAPIPackage/.build/arm64-apple-macosx/debug/ImagePipelineCore.build/ImageFilters.swiftdeps",
+    "diagnostics": "/Users/jd_home/Documents/SEA ALL APPS/AUDIO_SPLITTER POC/ImageAPIPackage/.build/arm64-apple-macosx/debug/ImagePipelineCore.build/ImageFilters.dia"
+  },
+  "/Users/jd_home/Documents/SEA ALL APPS/AUDIO_SPLITTER POC/PlatformSpineKit/Sources/ImagePipelineCore/ImagePipelineCore.swift": {
+    "dependencies": "/Users/jd_home/Documents/SEA ALL APPS/AUDIO_SPLITTER POC/ImageAPIPackage/.build/arm64-apple-macosx/debug/ImagePipelineCore.build/ImagePipelineCore.d",
+    "object": "/Users/jd_home/Documents/SEA ALL APPS/AUDIO_SPLITTER POC/ImageAPIPackage/.build/arm64-apple-macosx/debug/ImagePipelineCore.build/ImagePipelineCore.swift.o",
+    "swiftmodule": "/Users/jd_home/Documents/SEA ALL APPS/AUDIO_SPLITTER POC/ImageAPIPackage/.build/arm64-apple-macosx/debug/ImagePipelineCore.build/ImagePipelineCore~partial.swiftmodule",
+    "swift-dependencies": "/Users/jd_home/Documents/SEA ALL APPS/AUDIO_SPLITTER POC/ImageAPIPackage/.build/arm64-apple-macosx/debug/ImagePipelineCore.build/ImagePipelineCore.swiftdeps",
+    "diagnostics": "/Users/jd_home/Documents/SEA ALL APPS/AUDIO_SPLITTER POC/ImageAPIPackage/.build/arm64-apple-macosx/debug/ImagePipelineCore.build/ImagePipelineCore.dia"
+  }
+}
