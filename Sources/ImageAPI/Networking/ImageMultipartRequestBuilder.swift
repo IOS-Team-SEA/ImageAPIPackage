@@ -12,6 +12,11 @@ public enum ImageMultipartRequestBuilder {
         public let negativePrompt: String?
         public let images: [UIImage]
         public let timeout: TimeInterval
+        public let trueCfgScale: Double
+        public let numInferenceSteps: Int
+        public let guidanceScale: Double
+        public let numImagesPerPrompt: Int
+        public let seed: Int
 
         public init(
             userId: String,
@@ -19,7 +24,12 @@ public enum ImageMultipartRequestBuilder {
             prompt: String,
             negativePrompt: String? = nil,
             images: [UIImage],
-            timeout: TimeInterval = 60
+            timeout: TimeInterval = 60,
+            trueCfgScale: Double = 4.0,
+            numInferenceSteps: Int = 8,
+            guidanceScale: Double = 1.0,
+            numImagesPerPrompt: Int = 1,
+            seed: Int = 0
         ) {
             self.userId = userId
             self.isPremium = isPremium
@@ -27,6 +37,11 @@ public enum ImageMultipartRequestBuilder {
             self.negativePrompt = negativePrompt
             self.images = images
             self.timeout = timeout
+            self.trueCfgScale = trueCfgScale
+            self.numInferenceSteps = numInferenceSteps
+            self.guidanceScale = guidanceScale
+            self.numImagesPerPrompt = numImagesPerPrompt
+            self.seed = seed
         }
     }
 
@@ -55,6 +70,11 @@ public enum ImageMultipartRequestBuilder {
         if let negative = payload.negativePrompt, !negative.isEmpty {
             appendField(name: "negativePrompt", value: negative)
         }
+        appendField(name: "trueCfgScale", value: "\(payload.trueCfgScale)")
+        appendField(name: "numInferenceSteps", value: "\(payload.numInferenceSteps)")
+        appendField(name: "guidanceScale", value: "\(payload.guidanceScale)")
+        appendField(name: "numImagesPerPrompt", value: "\(payload.numImagesPerPrompt)")
+        appendField(name: "seed", value: "\(payload.seed)")
 
         for (index, image) in payload.images.enumerated() {
             guard let data = image.jpegData(compressionQuality: 0.9) else {
