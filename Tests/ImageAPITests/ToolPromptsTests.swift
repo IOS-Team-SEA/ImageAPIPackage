@@ -59,5 +59,44 @@ final class ToolPromptsTests: XCTestCase {
             XCTAssertEqual(actual, 1)
         }
     }
+
+    func testMakeupPromptRequiresDescription() {
+        let image = UIGraphicsImageRenderer(size: CGSize(width: 6, height: 6)).image { ctx in
+            UIColor.green.setFill(); ctx.fill(CGRect(x: 0, y: 0, width: 6, height: 6))
+        }
+        let input = MakeupInput(userImage: image, userDescription: "Apply eyeliner in black with thin style")
+        XCTAssertNoThrow(try MakeupTool.buildPrompt(userDescription: input.userDescription))
+    }
+
+    func testMakeupPromptMissingDescriptionThrows() {
+        let image = UIGraphicsImageRenderer(size: CGSize(width: 6, height: 6)).image { ctx in
+            UIColor.green.setFill(); ctx.fill(CGRect(x: 0, y: 0, width: 6, height: 6))
+        }
+        XCTAssertThrowsError(try MakeupTool.buildPrompt(userDescription: "   "))
+    }
+
+    func testMakeupPromptRequiresPresetsOrText() {
+        let image = UIGraphicsImageRenderer(size: CGSize(width: 6, height: 6)).image { ctx in
+            UIColor.green.setFill(); ctx.fill(CGRect(x: 0, y: 0, width: 6, height: 6))
+        }
+        let input = MakeupInput(
+            userImage: image,
+            skinPresets: [.naturalFoundation],
+            eyePresets: [.eyeliner(color: "BLACK", style: .thin)],
+            lipPresets: [.lipstick(color: "NUDE", finish: .matte, intensity: .light)],
+            browPresets: [.fillNaturally],
+            fullLookPresets: [.naturalEveryday],
+            customText: nil
+        )
+        XCTAssertNoThrow(try MakeupTool.buildPrompt(input: input))
+    }
+
+    func testMakeupPromptMissingEverythingThrows() {
+        let image = UIGraphicsImageRenderer(size: CGSize(width: 6, height: 6)).image { ctx in
+            UIColor.green.setFill(); ctx.fill(CGRect(x: 0, y: 0, width: 6, height: 6))
+        }
+        let empty = MakeupInput(userImage: image, customText: nil)
+        XCTAssertThrowsError(try MakeupTool.buildPrompt(input: empty))
+    }
     #endif
 }

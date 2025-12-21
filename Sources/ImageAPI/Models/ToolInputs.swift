@@ -1,9 +1,10 @@
 import Foundation
 #if canImport(UIKit)
 import UIKit
-#endif
 
-#if canImport(UIKit)
+
+
+
 public enum ToolInputError: Error, Equatable {
     case missingPrimaryImage
     case missingSecondaryImages
@@ -141,4 +142,105 @@ public struct PresetInput {
         self.userExtraDescription = userExtraDescription
     }
 }
+
+
+
+// MARK: - Makeup input types
+
+public enum MakeupIntensity: String {
+    case light = "LIGHT"
+    case medium = "MEDIUM"
+    case bold = "BOLD"
+}
+
+public enum MakeupSkinPreset {
+    case naturalFoundation
+    case lightMatteFoundation
+    case dewyFoundation
+    case reduceBlemishes
+    case reduceDarkCircles
+    case evenSkinTone
+    case softContour
+    case blush(color: String, intensity: MakeupIntensity)
+    case highlightCheekbones
+}
+
+public enum EyelinerStyle: String {
+    case thin = "THIN"
+    case winged = "WINGED"
+    case catEye = "CAT_EYE"
+    case softSmudge = "SOFT_SMUDGE"
+}
+
+public enum EyeshadowStyle: String {
+    case nude = "NUDE"
+    case smokey = "SMOKEY"
+    case glam = "GLAM"
+    case party = "PARTY"
+}
+
+public enum MakeupEyePreset {
+    case eyeliner(color: String, style: EyelinerStyle)
+    case eyeshadow(color: String, style: EyeshadowStyle)
+    case underEyeShadow
+    case enhanceLashes
+    case mascara
+}
+
+public enum LipFinish: String {
+    case matte = "MATTE"
+    case glossy = "GLOSSY"
+    case satin = "SATIN"
+}
+
+public enum MakeupLipPreset {
+    case lipstick(color: String, finish: LipFinish, intensity: MakeupIntensity)
+    case lipLinerMatch
+    case enhanceNaturalLip
+}
+
+public enum MakeupBrowPreset {
+    case fillNaturally
+    case defineLightly
+    case darkenSlightly
+    case softShading
+}
+
+public enum MakeupFullLookPreset {
+    case naturalEveryday
+    case softGlam
+    case party
+    case weddingGuest
+    case minimal
+    case eveningGlam
+}
+
+public struct MakeupInput {
+    public let userImage: UIImage
+    public let skinPresets: [MakeupSkinPreset]
+    public let eyePresets: [MakeupEyePreset]
+    public let lipPresets: [MakeupLipPreset]
+    public let browPresets: [MakeupBrowPreset]
+    public let fullLookPresets: [MakeupFullLookPreset]
+    public let customText: String?
+
+    public init(
+        userImage: UIImage,
+        skinPresets: [MakeupSkinPreset] = [],
+        eyePresets: [MakeupEyePreset] = [],
+        lipPresets: [MakeupLipPreset] = [],
+        browPresets: [MakeupBrowPreset] = [],
+        fullLookPresets: [MakeupFullLookPreset] = [],
+        customText: String? = nil
+    ) {
+        self.userImage = userImage
+        self.skinPresets = skinPresets
+        self.eyePresets = eyePresets
+        self.lipPresets = lipPresets
+        self.browPresets = browPresets
+        self.fullLookPresets = fullLookPresets
+        self.customText = customText
+    }
+}
+
 #endif
