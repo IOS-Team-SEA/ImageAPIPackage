@@ -18,7 +18,7 @@ final class ToolPromptsTests: XCTestCase {
             category: "Tech",
             styleReference: image
         )
-        XCTAssertNoThrow(try ToolPromptBuilders.logoPrompt(from: input))
+        XCTAssertNoThrow(try LogoGenerationTool.buildPrompt(from: input))
     }
 
     func testLogoPromptMissingFieldThrows() {
@@ -33,12 +33,12 @@ final class ToolPromptsTests: XCTestCase {
             category: "",
             styleReference: image
         )
-        XCTAssertThrowsError(try ToolPromptBuilders.logoPrompt(from: badInput))
+        XCTAssertThrowsError(try LogoGenerationTool.buildPrompt(from: badInput))
     }
 
     func testPresetPromptMergesExtra() throws {
         let descriptor = PresetDescriptor(id: "preset1", prompt: "Base Prompt")
-        let prompt = try ToolPromptBuilders.presetPrompt(descriptor: descriptor, extra: "tweak")
+        let prompt = try PresetTool.buildPrompt(descriptor: descriptor, extra: "tweak")
         XCTAssertTrue(prompt.contains("Base Prompt"))
         XCTAssertTrue(prompt.contains("tweak"))
     }
@@ -49,7 +49,7 @@ final class ToolPromptsTests: XCTestCase {
             UIColor.blue.setFill(); ctx.fill(CGRect(x: 0, y: 0, width: 4, height: 4))
         }
         let input = PresetInput(userImage: image, secondaryImages: [image], descriptor: descriptor)
-        let core = ImageAndTextToImageCoreTool(endpoint: URL(string: "https://example.com")!)
+        let core = MultiImageAndTextCoreTool(endpoint: URL(string: "https://example.com")!)
         let tool = PresetTool(core: core)
         XCTAssertThrowsError(try tool.makeRequest(input: input)) { error in
             guard case ToolInputError.secondaryCountMismatch(let expected, let actual) = error else {
