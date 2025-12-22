@@ -12,7 +12,7 @@ public struct ImageGenerationParameters: Equatable {
 
     public init(
         trueCFGScale: Double = 4.0,
-        numInferenceSteps: Int = 20,
+        numInferenceSteps: Int = 12,
         guidanceScale: Double = 1.0,
         numImages: Int = 1,
         seed: Int = 0

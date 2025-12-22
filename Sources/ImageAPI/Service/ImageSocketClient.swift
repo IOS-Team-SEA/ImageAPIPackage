@@ -55,6 +55,7 @@ public final class ImageSocketClient: SocketClientDelegate {
     // MARK: - SocketClientDelegate
 
     public func socketClient(_ client: SocketClient, didReceive event: SocketEvent) {
+        print("SOCKET STATUS: \(event.name)")
         switch event.name {
         case "socket-assigned":
             let payload = decodeEnvelope(from: event.items)

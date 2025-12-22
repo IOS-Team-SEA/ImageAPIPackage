@@ -20,6 +20,8 @@ public struct ImageJob: Codable, Equatable {
     public let images: [String]?
     public let prompt: String?
     public let outputImage: String?
+    public let outputImages: [String]?
+    public let processingTimeMs: Int?
 }
 
 public struct ImageUserState: Codable, Equatable {

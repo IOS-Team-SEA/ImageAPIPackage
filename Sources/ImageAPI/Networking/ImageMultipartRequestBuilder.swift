@@ -26,7 +26,7 @@ public enum ImageMultipartRequestBuilder {
             images: [UIImage],
             timeout: TimeInterval = 60,
             trueCfgScale: Double = 4.0,
-            numInferenceSteps: Int = 8,
+            numInferenceSteps: Int = 12,
             guidanceScale: Double = 1.0,
             numImagesPerPrompt: Int = 1,
             seed: Int = 0
