@@ -31,7 +31,13 @@ public final class ImageGenerationMultipartService {
             guard (200..<300).contains(http.statusCode) else {
                 throw ImageGenerationError.serverError(statusCode: http.statusCode, body: String(data: data, encoding: .utf8))
             }
-            return try decoder.decode(ImageAPIEnvelope.self, from: data)
+            do {
+                return try decoder.decode(ImageAPIEnvelope.self, from: data)
+            } catch {
+                let body = String(data: data, encoding: .utf8) ?? "<non-utf8>"
+                await Logger.error("Image multipart response decode failed", metadata: ["error": error.localizedDescription, "body": body, "status": "\(http.statusCode)"])
+                throw ImageGenerationError.transport(error)
+            }
         } catch {
             if let genError = error as? ImageGenerationError {
                 throw genError

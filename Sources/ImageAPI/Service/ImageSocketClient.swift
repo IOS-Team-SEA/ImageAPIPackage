@@ -93,10 +93,38 @@ public final class ImageSocketClient: SocketClientDelegate {
     private func decodeEnvelope(from items: [Any]) -> ImageAPIEnvelope? {
         guard let first = items.first else { return nil }
         if let dict = first as? [String: Any] {
-            return decodeJSONDictionary(dict, as: ImageAPIEnvelope.self, using: decoder)
+            // Nested payload dictionary
+            if let payloadDict = dict["payload"] as? [String: Any],
+               let decoded = decodeJSONDictionary(payloadDict, as: ImageAPIEnvelope.self, using: decoder) {
+                return decoded
+            }
+            // Payload as JSON string
+            if let payloadString = dict["payload"] as? String,
+               let data = payloadString.data(using: .utf8) {
+                do {
+                    return try decoder.decode(ImageAPIEnvelope.self, from: data)
+                } catch {
+                    let body = String(data: data, encoding: .utf8) ?? "<non-utf8>"
+                    print("ImageSocketClient: failed to decode envelope from payload string", ["error": error.localizedDescription, "body": body])
+                }
+            }
+            // Try the dictionary itself
+            if let decoded = decodeJSONDictionary(dict, as: ImageAPIEnvelope.self, using: decoder) {
+                return decoded
+            } else {
+                print("ImageSocketClient: Using ANother Decoder",["payload": "\(dict)"])
+            }
         }
         if let data = first as? Data {
-            return try? decoder.decode(ImageAPIEnvelope.self, from: data)
+            do {
+                let result = try decoder.decode(ImageAPIEnvelope.self, from: data)
+                print("ImageSocketClient: Success \(result) ")
+
+                return result
+            } catch {
+                let body = String(data: data, encoding: .utf8) ?? "<non-utf8>"
+                print("ImageSocketClient: failed to decode envelope from data", ["error": error.localizedDescription, "body": body])
+            }
         }
         return nil
     }
